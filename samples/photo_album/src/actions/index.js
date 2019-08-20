@@ -3,6 +3,7 @@ import {
     PHOTOS_UPLOADED,
     DELETE_UPLOADED_PHOTO,
     UPDATE_UPLOADED_PHOTO,
+    ALBUM_SELECTED,
 } from '../utils/Constants';
 
 export const photosFetched = photos => ({
@@ -23,4 +24,9 @@ export const updateUploadedPhoto = uploadedPhoto => ({
 export const deleteUploadedPhoto = publicId => ({
     type: DELETE_UPLOADED_PHOTO,
     publicId: publicId,
+});
+
+export const albumSelected = albumName => ({
+    type: ALBUM_SELECTED,
+    albumName: albumName
 });
