@@ -216,3 +216,22 @@ form .error { color: #c55; margin: 0 10px; }
     max-width: 300px;
     max-height: 150px;
 }
+
+.album-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 2px solid #ccc;
+    padding: 5px;
+}
+.album-list h2 {
+    color: #009;
+    font-size: 20px;
+
+}
+
+.album-list .album-btn {
+    cursor: pointer;
+    border: thin outset gray;
+    margin: 5px;
+}
