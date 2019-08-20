@@ -1,5 +1,5 @@
 import { Cloudinary as CoreCloudinary, Util } from 'cloudinary-core';
-import { ALBUM_TAG } from '../utils/Constants';
+// import { ALBUM_TAG } from '../utils/Constants';
 
 const defaultOptions = {
     cloudName: 'cantimaginewhy',
@@ -29,12 +29,19 @@ export const fetchPhotos = cloudName => {
     // *************************************************************************
     console.log('Cloudname: ', cloudName);
 
-    const urlPath = url(ALBUM_TAG, defaultOptions);
+    const urlPath = url('landscape', defaultOptions);
 
     return fetch(urlPath)
         .then(res => res.text())
         .then(text => (text ? JSON.parse(text).resources : []));
 };
+
+export const fetchAll = () => {
+    const urlPath = url('', defaultOptions);
+    return fetch(urlPath)
+        .then(res => res.text())
+        .then(text => (text ? JSON.parse(text).resources : []));
+}
 
 // fetch all images with specified tag
 export const fetchTag = tagName => {
