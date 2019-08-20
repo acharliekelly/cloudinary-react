@@ -5,11 +5,13 @@ import { Provider } from 'react-redux';
 import App from './components/App';
 import PhotosListReducer from './reducers/PhotosListReducer';
 import UploadedPhotosReducer from './reducers/UploadedPhotosReducer';
+import TagReducer from './reducers/TagReducer';
 import Config from './config/config';
 
 const rootReducer = combineReducers({
     photos: PhotosListReducer,
     uploadedPhotos: UploadedPhotosReducer,
+    albums: TagReducer,
 });
 
 const store = createStore(rootReducer);
