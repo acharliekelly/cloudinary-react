@@ -7,12 +7,17 @@ import { photosFetched } from '../actions';
 import PhotoListContainer from './PhotoList';
 import PhotosUploaderContainer from './PhotosUploader';
 import TestPhoto from './TestImage';
-import { fetchPhotos } from '../utils/CloudinaryService';
+import { fetchTag } from '../utils/CloudinaryService';
 import './App.css';
 
 class App extends Component {
     componentDidMount() {
-        fetchPhotos(this.props.cloudName).then(this.props.onPhotosFetched);
+        const tagName = this.props.tagName || 'landscape';
+        this.handleAlbumSelect(tagName);
+    }
+
+    handleAlbumSelect = tagName => {
+        fetchTag(tagName).then(this.props.onPhotosFetched);
     }
 
     render() {
@@ -29,11 +34,9 @@ class App extends Component {
                 />
                 <BrowserRouter>
                     <Switch className="router">
-                        <Route
-                            exact
-                            path="/photos"
-                            component={PhotoListContainer}
-                        />
+                        <Route exact path="/photos">
+                            <PhotoListContainer onAlbumSelect={this.handleAlbumSelect} />
+                        </Route>
                         <Route
                             exact
                             path="/photos/new"
@@ -54,6 +57,7 @@ class App extends Component {
 
 App.propTypes = {
     cloudName: PropTypes.string,
+    tagName: PropTypes.string,
     uploadPreset: PropTypes.string,
     onPhotosFetched: PropTypes.func,
 };
